@@ -6,7 +6,7 @@ namespace Lab3Square
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("For testing SquareRoot use ");
         }
     }
 }
