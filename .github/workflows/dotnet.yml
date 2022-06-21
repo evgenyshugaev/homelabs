@@ -17,7 +17,7 @@ jobs:
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 6.0.x
-    - name: Build
+    - name: Build Lab3Square.sln
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
