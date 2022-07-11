@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32510.428
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab3Square", "Lab3Square\Lab3Square.csproj", "{647577F6-C26D-4761-97A3-246C7DB82E9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab3Square", "Lab3Square\Lab3Square.csproj", "{647577F6-C26D-4761-97A3-246C7DB82E9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestSquare", "UnitTestSquare\UnitTestSquare.csproj", "{DBE6B034-D745-47EF-A0C2-AF234C513EB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestSquare", "UnitTestSquare\UnitTestSquare.csproj", "{DBE6B034-D745-47EF-A0C2-AF234C513EB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab5SpaceShipGame", "Lab5SpaceShipGame\Lab5SpaceShipGame.csproj", "{2CFD9974-C96A-4619-9379-5F5780051DF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestSpaceShipGame", "UnitTestSpaceShipGame\UnitTestSpaceShipGame.csproj", "{55105F7B-FF34-4C36-807E-C09D2D78F80A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{DBE6B034-D745-47EF-A0C2-AF234C513EB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBE6B034-D745-47EF-A0C2-AF234C513EB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBE6B034-D745-47EF-A0C2-AF234C513EB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CFD9974-C96A-4619-9379-5F5780051DF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CFD9974-C96A-4619-9379-5F5780051DF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CFD9974-C96A-4619-9379-5F5780051DF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CFD9974-C96A-4619-9379-5F5780051DF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55105F7B-FF34-4C36-807E-C09D2D78F80A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55105F7B-FF34-4C36-807E-C09D2D78F80A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55105F7B-FF34-4C36-807E-C09D2D78F80A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55105F7B-FF34-4C36-807E-C09D2D78F80A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
