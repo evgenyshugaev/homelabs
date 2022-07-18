@@ -1,29 +1,44 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Lab5SpaceShipGame
 {
     public class RotableAdapter : IRotable
     {
-        public int GetAngularVelocity()
+        private IUObject UObject;
+
+        public RotableAdapter(IUObject uObject)
         {
-            throw new NotImplementedException();
+            this.UObject = uObject;
+        }
+
+        public Vector GetAngularVelocity()
+        {
+            int d = (int)UObject.GetProperty("Direction");
+            int n = (int)UObject.GetProperty("DirectionsNumber");
+            int v = (int)UObject.GetProperty("Velocity");
+
+            double x = Math.Cos(2 * Math.PI / n * d);
+            double y = Math.Sin(2 * Math.PI / n * d);
+            return new Vector()
+            {
+               x = v * (x * Math.Cos(2 * Math.PI / n * d) + y * Math.Sin(2 * Math.PI / n * d)),
+               y = v * (x * Math.Sin(2 * Math.PI / n * d) + y * Math.Cos(2 * Math.PI / n * d)),
+            };
         }
 
         public int GetDirection()
         {
-            throw new NotImplementedException();
+            return (int)UObject.GetProperty("Direction");
         }
 
         public int GetDirectionsNumber()
         {
-            throw new NotImplementedException();
+            return (int)UObject.GetProperty("DirectionsNumber");
         }
 
         public void SetDirection(int direction)
         {
-            throw new NotImplementedException();
+            UObject.SetProperty("Direction", direction);
         }
     }
 }

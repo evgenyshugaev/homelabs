@@ -10,7 +10,7 @@ namespace Lab5SpaceShipGame
     public interface IRotable
     {
         int GetDirection();
-        int GetAngularVelocity();
+        Vector GetAngularVelocity();
         void SetDirection(int direction);
         int GetDirectionsNumber();
     }

@@ -9,7 +9,18 @@ namespace Lab5SpaceShipGame
     /// </summary>
     public class Vector
     {
-        double x;
-        double y;
+        public double x;
+        public double y;
+
+        public Vector()
+        {
+
+        }
+
+        public Vector(double newX, double newY)
+        {
+            x = newX;
+            y = newY;
+        }
     }
 }
