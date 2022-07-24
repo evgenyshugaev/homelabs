@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Lab5SpaceShipGame\Lab5SpaceShipGame.csproj" />
+    <ProjectReference Include="..\Lab5SpaceShipGame\SpaceShipGame.csproj" />
   </ItemGroup>
 
 </Project>

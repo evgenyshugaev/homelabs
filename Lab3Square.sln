@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab3Square", "Lab3Square\La
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestSquare", "UnitTestSquare\UnitTestSquare.csproj", "{DBE6B034-D745-47EF-A0C2-AF234C513EB8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab5SpaceShipGame", "Lab5SpaceShipGame\Lab5SpaceShipGame.csproj", "{2CFD9974-C96A-4619-9379-5F5780051DF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceShipGame", "Lab5SpaceShipGame\SpaceShipGame.csproj", "{2CFD9974-C96A-4619-9379-5F5780051DF5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestSpaceShipGame", "UnitTestSpaceShipGame\UnitTestSpaceShipGame.csproj", "{55105F7B-FF34-4C36-807E-C09D2D78F80A}"
 EndProject
