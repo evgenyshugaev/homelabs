@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Lab5SpaceShipGame
+namespace SpaceShipGame
 {
     /// <summary>
     /// Присвоение/получение свойств универсального объекта.

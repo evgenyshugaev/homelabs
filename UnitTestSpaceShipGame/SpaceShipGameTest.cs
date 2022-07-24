@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 using Moq;
-using Lab5SpaceShipGame;
+using SpaceShipGame;
 
 namespace UnitTestSpaceShipGame
 {

@@ -1,6 +1,6 @@
-﻿using Lab5SpaceShipGame.Exeptions;
+﻿using SpaceShipGame.Exeptions;
 
-namespace Lab5SpaceShipGame
+namespace SpaceShipGame
 {
     public class BurnFuelCommand: IBurnFuel
     {

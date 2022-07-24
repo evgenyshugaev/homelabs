@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lab5SpaceShipGame
+namespace SpaceShipGame
 {
     public class RotableAdapter : IRotable
     {

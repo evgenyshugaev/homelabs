@@ -1,8 +1,8 @@
-using Lab5SpaceShipGame;
-using Lab5SpaceShipGame.Exeptions;
+using SpaceShipGame;
 using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
+using SpaceShipGame.Exeptions;
 
 namespace SpaceShipGameUnitTest
 {

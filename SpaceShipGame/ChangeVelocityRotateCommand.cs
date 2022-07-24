@@ -1,9 +1,9 @@
-﻿using Lab5SpaceShipGame.Exeptions;
+﻿using SpaceShipGame.Exeptions;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Lab5SpaceShipGame
+namespace SpaceShipGame
 {
     public class ChangeVelocityRotateCommand : IChangeVelocityRotate
     {
