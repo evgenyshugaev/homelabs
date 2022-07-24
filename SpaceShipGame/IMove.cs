@@ -9,5 +9,6 @@ namespace Lab5SpaceShipGame
     /// </summary>
     public interface IMove: ICommand
     {
+
     }
 }
