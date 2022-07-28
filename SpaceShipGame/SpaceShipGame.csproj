@@ -4,4 +4,21 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="IBurnFuel.cs" />
+    <Compile Remove="IChangeVelocity.cs" />
+    <Compile Remove="IChangeVelocityRotate.cs" />
+    <Compile Remove="ICheckFuel.cs" />
+    <Compile Remove="ICommand.cs" />
+    <Compile Remove="IMovable.cs" />
+    <Compile Remove="IMove.cs" />
+    <Compile Remove="IRotable.cs" />
+    <Compile Remove="IUObject.cs" />
+    <Compile Remove="Vector.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj" />
+  </ItemGroup>
+
 </Project>

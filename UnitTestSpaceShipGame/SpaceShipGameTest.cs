@@ -2,6 +2,7 @@ using System;
 using Xunit;
 using Moq;
 using SpaceShipGame;
+using Interfaces;
 
 namespace UnitTestSpaceShipGame
 {

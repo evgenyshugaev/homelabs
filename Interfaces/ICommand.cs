@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SpaceShipGame
+namespace Interfaces
 {
     /// <summary>
-    /// Движение объекта.
+    /// Комманда.
     /// </summary>
-    public interface IMove: ICommand
+    public interface ICommand
     {
-
+        void Execute();
     }
 }

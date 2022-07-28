@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SpaceShipGame
+namespace Interfaces
 {
     /// <summary>
     /// Задает поворот объекта в одномерном пространстве.

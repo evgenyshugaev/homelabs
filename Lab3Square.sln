@@ -9,9 +9,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestSquare", "UnitTestS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestSpaceShipGame", "UnitTestSpaceShipGame\UnitTestSpaceShipGame.csproj", "{55105F7B-FF34-4C36-807E-C09D2D78F80A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceShipGameUnitTest", "SpaceShipGameUnitTest\SpaceShipGameUnitTest.csproj", "{AC33BA79-CECA-4EAE-A436-67DE969A8127}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceShipGameUnitTest", "SpaceShipGameUnitTest\SpaceShipGameUnitTest.csproj", "{AC33BA79-CECA-4EAE-A436-67DE969A8127}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceShipGame", "SpaceShipGame\SpaceShipGame.csproj", "{6E02B215-3631-4F75-B304-D61155B34E65}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab8Exceptions", "Lab8Exceptions\Lab8Exceptions.csproj", "{6AF19CA7-5C58-47F5-A77B-1D7E327CAE13}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interfaces", "Interfaces\Interfaces.csproj", "{352A1220-0042-440D-A6CA-0ECAE24E6855}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestExceptions", "UnitTestExceptions\UnitTestExceptions.csproj", "{6FCAFFB7-E15D-49AF-A43E-D9CF3935F93D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +45,18 @@ Global
 		{6E02B215-3631-4F75-B304-D61155B34E65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E02B215-3631-4F75-B304-D61155B34E65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E02B215-3631-4F75-B304-D61155B34E65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AF19CA7-5C58-47F5-A77B-1D7E327CAE13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AF19CA7-5C58-47F5-A77B-1D7E327CAE13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AF19CA7-5C58-47F5-A77B-1D7E327CAE13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AF19CA7-5C58-47F5-A77B-1D7E327CAE13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{352A1220-0042-440D-A6CA-0ECAE24E6855}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{352A1220-0042-440D-A6CA-0ECAE24E6855}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{352A1220-0042-440D-A6CA-0ECAE24E6855}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{352A1220-0042-440D-A6CA-0ECAE24E6855}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FCAFFB7-E15D-49AF-A43E-D9CF3935F93D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FCAFFB7-E15D-49AF-A43E-D9CF3935F93D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FCAFFB7-E15D-49AF-A43E-D9CF3935F93D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FCAFFB7-E15D-49AF-A43E-D9CF3935F93D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

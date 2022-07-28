@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SpaceShipGame
+namespace Interfaces
 {
     /// <summary>
-    /// Сжиание топлива.
+    /// Изменение мгновенной скорости.
     /// </summary>
-    public interface IBurnFuel: ICommand
+    public interface IChangeVelocity
     {
     }
 }

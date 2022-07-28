@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SpaceShipGame
+namespace Interfaces
 {
     /// <summary>
-    /// Проверка топлива.
+    /// Движение объекта.
     /// </summary>
-    public interface ICheckFuel: ICommand
+    public interface IMove: ICommand
     {
+
     }
 }

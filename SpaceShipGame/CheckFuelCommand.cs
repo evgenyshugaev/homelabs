@@ -1,4 +1,5 @@
-﻿using SpaceShipGame.Exeptions;
+﻿using Interfaces;
+using SpaceShipGame.Exeptions;
 
 namespace SpaceShipGame
 {
