@@ -4,11 +4,73 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using SpaceShipGame.Exeptions;
 using Interfaces;
+using SimpleIoc;
+using System;
+using SpaceShipGameServer;
+using System.Threading.Tasks;
 
 namespace SpaceShipGameUnitTest
 {
     public class SpaceShipGameUnitTest
     {
+        [Test]
+        public void RegisterIocSuccsess()
+        {
+            Assert.DoesNotThrow(() => IocResolveStrategy.RegisterDependensies());
+        }
+
+        [Test]
+        public void IocResolveSuccsess()
+        {
+            IocResolveStrategy.RegisterDependensies();
+
+            var checkFuelCommandMock = new Mock<IUObject>();
+            checkFuelCommandMock.Setup(o => o.GetProperty("fuel")).Returns((decimal)7);
+
+            CheckFuelCommand cmd = Ioc.Resolve<CheckFuelCommand>("CheckFuelCommand", checkFuelCommandMock.Object, (decimal)5);
+
+            Assert.NotNull(cmd);
+        }
+
+        [Test]
+        public void IocRegisterScopeSuccsess()
+        {
+            Assert.DoesNotThrow(() => Ioc.Resolve<ICommand>("Scopes.New", "scope1"));
+        }
+
+        [Test]
+        public void IocSetCurrentScopeSuccsess()
+        {
+            Ioc.Resolve<ICommand>("Scopes.New", "scope1");
+            Ioc.Resolve<ICommand>("Scopes.New", "scope2");
+            Ioc.Resolve<ICommand>("Scopes.Current", "scope1");
+
+            Assert.True(Ioc.CurrentScopeProperty == "scope1");
+        }
+
+
+        [Test]
+        public void IocRegisterParallelScopeSuccsess()
+        {
+            Action action1 = () =>
+            {
+                Ioc.Resolve<ICommand>("Scopes.New", "scope1");
+            };
+
+            Action action2 = () =>
+            {
+                Ioc.Resolve<ICommand>("Scopes.New", "scope2");
+            };
+
+
+            Parallel.Invoke(action1, action2);
+        }
+
+
+        #region SpaceShip tests
+
+        
+
         [Test]
         public void CheckFuelCommandSuccsess()
         {
@@ -148,5 +210,7 @@ namespace SpaceShipGameUnitTest
 
             Assert.Throws<CommandException>(() => changeVelocityRotateCommand.Execute());
         }
+
+        #endregion
     }
 }

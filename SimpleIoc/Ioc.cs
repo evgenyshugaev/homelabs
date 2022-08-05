@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 
+
 namespace SimpleIoc
 {
     /// <summary>
@@ -11,13 +12,21 @@ namespace SimpleIoc
     /// </summary>
     public static class Ioc
     {
-        private static ThreadLocal<IScope> Scopes = new ThreadLocal<IScope>();
+        private static ThreadLocal<IScope> Scopes = new ThreadLocal<IScope>(true);
 
         private static string CurrentScope;
 
+        public static string CurrentScopeProperty 
+        {
+            get
+            {
+                return CurrentScope;
+            }
+        }
+
         static Ioc()
         {
-            Scopes = new ThreadLocal<IScope>(() => { return new Scope(); });
+            Scopes = new ThreadLocal<IScope>(() => { return new Scope(); }, true);
         }
 
         public static T Resolve<T>(string key, params object[] args)
@@ -34,9 +43,7 @@ namespace SimpleIoc
 
             if (key.Contains("Scopes.New"))
             {
-                Thread t = new Thread(RegisterNewScope);
-                t.Start(args[0]);
-                t.Join();
+                RegisterNewScope(args[0]);
                 return default(T);
             }
 

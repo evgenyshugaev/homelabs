@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interfaces", "Interfaces\In
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestExceptions", "UnitTestExceptions\UnitTestExceptions.csproj", "{6FCAFFB7-E15D-49AF-A43E-D9CF3935F93D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleIoc", "SimpleIoc\SimpleIoc.csproj", "{302EA4F8-989A-424F-8815-19B7CC902317}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleIoc", "SimpleIoc\SimpleIoc.csproj", "{302EA4F8-989A-424F-8815-19B7CC902317}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceShipGameServer", "SpaceShipGameServer\SpaceShipGameServer.csproj", "{7F3DE1C4-E803-4C80-99F6-47D43C2FBF97}"
 EndProject
