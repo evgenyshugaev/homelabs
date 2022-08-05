@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestExceptions", "UnitT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleIoc", "SimpleIoc\SimpleIoc.csproj", "{302EA4F8-989A-424F-8815-19B7CC902317}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceShipGameServer", "SpaceShipGameServer\SpaceShipGameServer.csproj", "{7F3DE1C4-E803-4C80-99F6-47D43C2FBF97}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceShipGameServer", "SpaceShipGameServer\SpaceShipGameServer.csproj", "{3B815BE0-A0C4-4CF0-94BB-13F3872E86C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,10 +65,10 @@ Global
 		{302EA4F8-989A-424F-8815-19B7CC902317}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{302EA4F8-989A-424F-8815-19B7CC902317}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{302EA4F8-989A-424F-8815-19B7CC902317}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7F3DE1C4-E803-4C80-99F6-47D43C2FBF97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7F3DE1C4-E803-4C80-99F6-47D43C2FBF97}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7F3DE1C4-E803-4C80-99F6-47D43C2FBF97}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7F3DE1C4-E803-4C80-99F6-47D43C2FBF97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B815BE0-A0C4-4CF0-94BB-13F3872E86C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B815BE0-A0C4-4CF0-94BB-13F3872E86C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B815BE0-A0C4-4CF0-94BB-13F3872E86C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B815BE0-A0C4-4CF0-94BB-13F3872E86C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
