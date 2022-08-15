@@ -31,15 +31,21 @@ namespace SimpleIoc
 
         public static T Resolve<T>(string key, params object[] args)
         {
-            //T resolved = default(T);
-            
             if (key.Contains("IoC.Register"))
             {
                 Register<T>(args);
                 return default(T);
             }
 
-            // IoC.Resolve("Scopes.New", "scopeId").Execute();
+            if (key.Contains("Adapter"))
+            {
+                key = ((Type)args[0]).Name.TrimStart('I') + "Adapter";
+                args[0] = key;
+
+                return string.IsNullOrEmpty(CurrentScope)
+                    ? (T)Scopes.Value.GetFunc(key)(args)
+                    : (T)Scopes.Values.FirstOrDefault(v => v.ScopeName == CurrentScope).GetFunc(key)(args);
+            }
 
             if (key.Contains("Scopes.New"))
             {

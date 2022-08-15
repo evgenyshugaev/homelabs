@@ -12,5 +12,7 @@ namespace Interfaces
         Vector GetPosition();
         Vector GetVelocity();
         void SetPosition(Vector vector);
+
+        void Finish();
     }
 }

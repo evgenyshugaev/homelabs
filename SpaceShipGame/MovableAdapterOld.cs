@@ -3,13 +3,18 @@ using System;
 
 namespace SpaceShipGame
 {
-    public class MovableAdapter : IMovable
+    public class MovableAdapterOld : IMovable
     {
         private IUObject UObject;
 
-        public MovableAdapter(IUObject uObject)
+        public MovableAdapterOld(IUObject uObject)
         {
             this.UObject = uObject;
+        }
+
+        public void Finish()
+        {
+            throw new NotImplementedException();
         }
 
         public Vector GetPosition()

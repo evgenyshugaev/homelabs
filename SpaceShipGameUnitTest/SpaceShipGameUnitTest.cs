@@ -14,6 +14,26 @@ namespace SpaceShipGameUnitTest
     public class SpaceShipGameUnitTest
     {
         [Test]
+        public void GenerateClassSuccsess()
+        {
+            IocResolveStrategy.RegisterDependensies();
+
+            UObject uobject = new UObject();
+            new SetPropertyCommand(uobject, "Positiion", new Vector(1, 5)).Execute();
+
+            // Пункты задания 1 и 2
+            var adapter = Ioc.Resolve<IMovable>("Adapter", typeof(IMovable), uobject);
+
+            Assert.True(adapter != null && adapter is IMovable);
+
+            Vector position = adapter.GetPosition();
+            Assert.True(position != null && position is Vector);
+
+            //Пункт задания 3
+            Assert.DoesNotThrow(() => adapter.Finish());
+        }
+
+        [Test]
         public void RegisterIocSuccsess()
         {
             Assert.DoesNotThrow(() => IocResolveStrategy.RegisterDependensies());
