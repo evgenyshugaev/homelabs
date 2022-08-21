@@ -1,4 +1,5 @@
 ﻿using CodeGenerator;
+using CommandQueue;
 using Interfaces;
 using SimpleIoc;
 using SpaceShipGame;
@@ -22,6 +23,7 @@ namespace SpaceShipGameServer
             );
 
             RegisterMovableAdapter();
+            RegisterCommandQueueHandler();
         }
 
         private static void RegisterMovableAdapter()
@@ -40,6 +42,9 @@ namespace SpaceShipGameServer
 
             RegisterMovableAdapterGetPosition();
             RegisterMovableAdapterFinish();
+            RegisterStartQueueCommand();
+            RegisterHardStopCommand();
+            RegisterSoftStopCommand();
         }
 
         private static void RegisterMovableAdapterGetPosition()
@@ -67,6 +72,62 @@ namespace SpaceShipGameServer
             "IoC.Register",
             "Operations.IMovable.Finish",
             f);
+        }
+
+        private static void RegisterCommandQueueHandler()
+        {
+            Func<object[], object> f = (args) =>
+            {
+                return new CommandQueueHandler((IQueue)args[0]);
+            };
+
+            Ioc.Resolve<ICommand>(
+                "IoC.Register",
+                "CommandQueueHandler",
+                f
+            );
+        }
+
+        private static void RegisterStartQueueCommand()
+        {
+            Func<object[], object> f = (args) =>
+            {
+                return new StartQueueCommand((CommandQueueHandler)args[0]);
+            };
+
+            Ioc.Resolve<ICommand>(
+                "IoC.Register",
+                "StartQueueCommand",
+                f
+            );
+        }
+
+        private static void RegisterHardStopCommand()
+        {
+            Func<object[], object> f = (args) =>
+            {
+                return new HardStopCommand((IUObject)args[0]);
+            };
+
+            Ioc.Resolve<ICommand>(
+                "IoC.Register",
+                "HardStopCommand",
+                f
+            );
+        }
+
+        private static void RegisterSoftStopCommand()
+        {
+            Func<object[], object> f = (args) =>
+            {
+                return new SoftStopCommand((IUObject)args[0]);
+            };
+
+            Ioc.Resolve<ICommand>(
+                "IoC.Register",
+                "SoftStopCommand",
+                f
+            );
         }
     }
 }

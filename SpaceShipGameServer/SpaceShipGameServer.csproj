@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CodeGenerator\CodeGenerator.csproj" />
+    <ProjectReference Include="..\CommandQueue\CommandQueue.csproj" />
     <ProjectReference Include="..\SimpleIoc\SimpleIoc.csproj" />
     <ProjectReference Include="..\SpaceShipGame\SpaceShipGame.csproj" />
   </ItemGroup>

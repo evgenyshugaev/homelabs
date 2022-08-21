@@ -81,6 +81,11 @@ namespace SimpleIoc
                 : (T)Scopes.Values.FirstOrDefault(v => v.ScopeName == CurrentScope).GetFunc(key)(args);
         }
 
+        public static void ClearCurrentScope()
+        {
+            CurrentScope = null;
+        }
+
         private static void Register<T>(params object[] args)
         {
             Scopes.Value.SetFunc((string)args[0], (Func<object[], object>)args[1]);
