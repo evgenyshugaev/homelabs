@@ -32,6 +32,11 @@ namespace CommandQueue
 
         private void Handle(IQueue queue)
         {
+            if (queue.Count() == 0)
+            {
+                return;
+            }
+            
             ICommand command = queue.Get();
 
             try
