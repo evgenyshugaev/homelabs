@@ -1,5 +1,5 @@
 ﻿using Interfaces;
-using System.Collections.Generic;
+using System.Collections.Concurrent;
 
 namespace CommandQueue
 {
@@ -8,11 +8,11 @@ namespace CommandQueue
     /// </summary>
     public class CommandQueue : IQueue
     {
-        Queue<ICommand> Queue;
+        ConcurrentQueue<ICommand> Queue;
 
         public CommandQueue()
         {
-            Queue = new Queue<ICommand>();
+            Queue = new ConcurrentQueue<ICommand>();
         }
 
         public int Count()
@@ -22,7 +22,8 @@ namespace CommandQueue
 
         public ICommand Get()
         {
-            return Queue.Dequeue();
+            Queue.TryDequeue(out ICommand cmd);
+            return cmd;
         }
 
         public void Put(ICommand command)
