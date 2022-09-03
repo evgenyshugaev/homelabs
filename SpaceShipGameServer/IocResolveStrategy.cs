@@ -22,8 +22,39 @@ namespace SpaceShipGameServer
                 f
             );
 
+            RegisterGameCommand();
+            RegisterInetrpretCommand();
             RegisterMovableAdapter();
             RegisterCommandQueueHandler();
+            RegisterStartQueueCommand();
+            RegisterHardStopCommand();
+            RegisterSoftStopCommand();
+        }
+
+        private static void RegisterGameCommand()
+        {
+            Func<object[], object> f = (args) =>
+            {
+                return new GameCommand((string)args[0]);
+            };
+
+            Ioc.Resolve<ICommand>(
+            "IoC.Register",
+            "GameCommand",
+            f);
+        }
+
+        private static void RegisterInetrpretCommand()
+        {
+            Func<object[], object> f = (args) =>
+            {
+                return new InterpretCommand((GameCommand)args[0]);
+            };
+
+            Ioc.Resolve<ICommand>(
+            "IoC.Register",
+            "InetrpretCommand",
+            f);
         }
 
         private static void RegisterMovableAdapter()
@@ -42,9 +73,6 @@ namespace SpaceShipGameServer
 
             RegisterMovableAdapterGetPosition();
             RegisterMovableAdapterFinish();
-            RegisterStartQueueCommand();
-            RegisterHardStopCommand();
-            RegisterSoftStopCommand();
         }
 
         private static void RegisterMovableAdapterGetPosition()

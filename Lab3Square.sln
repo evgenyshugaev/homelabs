@@ -25,7 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceShipGameServer", "Spac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGenerator", "CodeGenerator\CodeGenerator.csproj", "{B77C89DA-9E83-4E61-8A29-49E7EF441D11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandQueue", "CommandQueue\CommandQueue.csproj", "{FA33EE46-BE25-4927-A313-CA396AFCC8C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommandQueue", "CommandQueue\CommandQueue.csproj", "{FA33EE46-BE25-4927-A313-CA396AFCC8C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceShipGameApi", "SpaceShipGameApi\SpaceShipGameApi.csproj", "{CD8E7997-D87F-43C0-B3C2-F3BE1F8477D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{FA33EE46-BE25-4927-A313-CA396AFCC8C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA33EE46-BE25-4927-A313-CA396AFCC8C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA33EE46-BE25-4927-A313-CA396AFCC8C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD8E7997-D87F-43C0-B3C2-F3BE1F8477D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD8E7997-D87F-43C0-B3C2-F3BE1F8477D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD8E7997-D87F-43C0-B3C2-F3BE1F8477D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD8E7997-D87F-43C0-B3C2-F3BE1F8477D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

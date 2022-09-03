@@ -15,6 +15,27 @@ namespace SpaceShipGameUnitTest
     public class SpaceShipGameUnitTest
     {
         [Test]
+        public void StartNewGameCommandSuccsess()
+        {
+            IocResolveStrategy.RegisterDependensies();
+
+            var newGame = Ioc.Resolve<GameCommand>("GameCommand", "new_game");
+            Assert.DoesNotThrow(() => newGame.Execute());
+        }
+
+        [Test]
+        public void InterpretCommandCommandSuccsess()
+        {
+            IocResolveStrategy.RegisterDependensies();
+
+            var newGame = Ioc.Resolve<GameCommand>("GameCommand", "new_game");
+            InterpretCommand inetrpretCommand = Ioc.Resolve<InterpretCommand>("InetrpretCommand", newGame);
+
+            Assert.DoesNotThrow(() => inetrpretCommand.Execute());
+        }
+
+
+        [Test]
         public void StartQueueCommandSuccsess()
         {
             IocResolveStrategy.RegisterDependensies();

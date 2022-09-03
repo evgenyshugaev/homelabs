@@ -13,6 +13,7 @@ namespace SimpleIoc
     public static class Ioc
     {
         private static ThreadLocal<IScope> Scopes = new ThreadLocal<IScope>(true);
+        private static List<string> ScopeNames = new List<string>();
 
         private static string CurrentScope;
 
@@ -59,7 +60,8 @@ namespace SimpleIoc
                 return default(T);
             }
 
-            if (!string.IsNullOrEmpty(CurrentScope) && !Scopes.Values.Any(v => v.ScopeName == CurrentScope))
+            if (!string.IsNullOrEmpty(CurrentScope) && !ScopeNames.Any(v => v == CurrentScope))
+                //!Scopes.Values.Any(v => v.ScopeName == CurrentScope))
             {
                 throw new Exception($"Скоуп {CurrentScope} не найден.");
             }
@@ -97,6 +99,8 @@ namespace SimpleIoc
             Scope scope = new Scope();
             scope.ScopeName = scopeName;
             Scopes.Values.Add(scope);
+            Scopes.Values.Last().ScopeName = scopeName;
+            ScopeNames.Add(scopeName);
         }
     }
 }
