@@ -1,4 +1,5 @@
-﻿using SimpleIoc;
+﻿using Interfaces;
+using SimpleIoc;
 using SpaceShipGame;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace SpaceShipGameServer
             Games = new Dictionary<string, GameCommand>();
         }
 
-        public static GameCommand StartNewGame(string id)
+        public static GameCommand StartNewGame(string id, List<IUObject> users)
         {
             if (string.IsNullOrEmpty(id))
             {
@@ -29,7 +30,7 @@ namespace SpaceShipGameServer
                 throw new Exception("Игра с таким id уже существует.");
             }
 
-            var newGame = Ioc.Resolve<GameCommand>("GameCommand", id);
+            var newGame = Ioc.Resolve<GameCommand>("GameCommand", id, users);
             newGame.Execute();
             Games.Add(id, newGame);
 

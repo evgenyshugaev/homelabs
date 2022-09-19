@@ -15,7 +15,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Interfaces\Interfaces.csproj" />
+    <ProjectReference Include="..\SecurityToken\SecurityToken.csproj" />
     <ProjectReference Include="..\SimpleIoc\SimpleIoc.csproj" />
+    <ProjectReference Include="..\SpaceShipGameApi\SpaceShipGameApi.csproj" />
     <ProjectReference Include="..\SpaceShipGameServer\SpaceShipGameServer.csproj" />
     <ProjectReference Include="..\SpaceShipGame\SpaceShipGame.csproj" />
   </ItemGroup>

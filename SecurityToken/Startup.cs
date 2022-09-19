@@ -1,4 +1,3 @@
-using Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -7,27 +6,20 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using SpaceShipGame;
-using SpaceShipGameServer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SpaceShipGameApi
+namespace SecurityToken
 {
     public class Startup
     {
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            IocResolveStrategy.RegisterDependensies();
 
-            var user1 = new UObject();
-            user1.SetProperty("name", "Евгений");
 
-            StartupServer.StartNewGame("game_1", new List<IUObject>() { user1 });
-            StartupServer.StartNewGame("game_2", new List<IUObject>() { user1 });
         }
 
         public IConfiguration Configuration { get; }
@@ -39,7 +31,7 @@ namespace SpaceShipGameApi
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "SpaceShipGameApi", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "SecurityToken", Version = "v1" });
             });
         }
 
@@ -50,7 +42,7 @@ namespace SpaceShipGameApi
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SpaceShipGameApi v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SecurityToken v1"));
             }
 
             app.UseRouting();

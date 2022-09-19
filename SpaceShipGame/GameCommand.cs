@@ -15,11 +15,13 @@ namespace SpaceShipGame
 
         public List<IUObject> GameObjects { get; private set; }
 
+        public List<IUObject> Users { get; private set; }
+
         public IQueue Commands { get; private set; }
 
         public ConcurrentQueue<MessageDto> Messages { get; private set; }
         
-        public GameCommand(string id)
+        public GameCommand(string id, List<IUObject> users)
         {
             if (string.IsNullOrEmpty(id))
             {
@@ -30,6 +32,7 @@ namespace SpaceShipGame
             Commands = new CommandQueue.CommandQueue();
             Messages = new ConcurrentQueue<MessageDto>();
             GameObjects = new List<IUObject>();
+            Users = users;
 
             // При старте игры создаем несколько игровых объектов
             var spaceship_1 = new UObject();

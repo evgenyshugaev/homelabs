@@ -9,17 +9,55 @@ using System;
 using SpaceShipGameServer;
 using System.Threading.Tasks;
 using CommandQueue;
+using SecurityToken;
+using SpaceShipGameApi;
 
 namespace SpaceShipGameUnitTest
 {
     public class SpaceShipGameUnitTest
     {
         [Test]
+        public void GetTokenSuccsess()
+        {
+            string userName = "Василий";
+            string gameId = "game_637991670406364617";
+            
+            Assert.DoesNotThrow(() => TokenService.GetToken(userName, gameId));
+        }
+
+        [Test]
+        public void CheckTokenSuccsess()
+        {
+            string userName = "Василий";
+            string gameId = "game_637991670406364617";
+
+            var token = TokenService.GetToken(userName, gameId);
+
+            Assert.IsTrue(TokenValidator.ValidateToken(token));
+        }
+
+        [Test]
+        public void CheckTokenFailed()
+        {
+            string userName = "Василий";
+            string gameId = "game_637991670406364617";
+
+            var token = TokenService.GetToken(userName, gameId);
+            token = token + "111hso";
+
+            Assert.IsFalse(TokenValidator.ValidateToken(token));
+        }
+
+
+
+        [Test]
         public void StartNewGameCommandSuccsess()
         {
             IocResolveStrategy.RegisterDependensies();
 
-            var newGame = Ioc.Resolve<GameCommand>("GameCommand", "new_game");
+            var user1 = new UObject();
+            user1.SetProperty("name", "Евгений");
+            var newGame = Ioc.Resolve<GameCommand>("GameCommand", "new_game", new List<IUObject>() { user1 });
             Assert.DoesNotThrow(() => newGame.Execute());
         }
 
@@ -28,7 +66,9 @@ namespace SpaceShipGameUnitTest
         {
             IocResolveStrategy.RegisterDependensies();
 
-            var newGame = Ioc.Resolve<GameCommand>("GameCommand", "new_game");
+            var user1 = new UObject();
+            user1.SetProperty("name", "Евгений");
+            var newGame = Ioc.Resolve<GameCommand>("GameCommand", "new_game", new List<IUObject>() { user1 });
             InterpretCommand inetrpretCommand = Ioc.Resolve<InterpretCommand>("InetrpretCommand", newGame);
 
             Assert.DoesNotThrow(() => inetrpretCommand.Execute());

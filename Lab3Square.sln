@@ -27,7 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGenerator", "CodeGenera
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommandQueue", "CommandQueue\CommandQueue.csproj", "{FA33EE46-BE25-4927-A313-CA396AFCC8C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceShipGameApi", "SpaceShipGameApi\SpaceShipGameApi.csproj", "{CD8E7997-D87F-43C0-B3C2-F3BE1F8477D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceShipGameApi", "SpaceShipGameApi\SpaceShipGameApi.csproj", "{CD8E7997-D87F-43C0-B3C2-F3BE1F8477D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecurityToken", "SecurityToken\SecurityToken.csproj", "{14D71653-EA5F-4113-A610-C3A99655BDC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,10 @@ Global
 		{CD8E7997-D87F-43C0-B3C2-F3BE1F8477D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD8E7997-D87F-43C0-B3C2-F3BE1F8477D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD8E7997-D87F-43C0-B3C2-F3BE1F8477D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14D71653-EA5F-4113-A610-C3A99655BDC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14D71653-EA5F-4113-A610-C3A99655BDC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14D71653-EA5F-4113-A610-C3A99655BDC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14D71653-EA5F-4113-A610-C3A99655BDC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

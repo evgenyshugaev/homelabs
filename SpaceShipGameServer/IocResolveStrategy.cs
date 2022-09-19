@@ -4,6 +4,7 @@ using Interfaces;
 using SimpleIoc;
 using SpaceShipGame;
 using System;
+using System.Collections.Generic;
 
 namespace SpaceShipGameServer
 {
@@ -35,7 +36,7 @@ namespace SpaceShipGameServer
         {
             Func<object[], object> f = (args) =>
             {
-                return new GameCommand((string)args[0]);
+                return new GameCommand((string)args[0], (List<IUObject>)args[1]);
             };
 
             Ioc.Resolve<ICommand>(
