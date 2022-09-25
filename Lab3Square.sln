@@ -29,7 +29,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommandQueue", "CommandQueu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceShipGameApi", "SpaceShipGameApi\SpaceShipGameApi.csproj", "{CD8E7997-D87F-43C0-B3C2-F3BE1F8477D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecurityToken", "SecurityToken\SecurityToken.csproj", "{14D71653-EA5F-4113-A610-C3A99655BDC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecurityToken", "SecurityToken\SecurityToken.csproj", "{14D71653-EA5F-4113-A610-C3A99655BDC4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{55E8E355-BE54-435B-A184-BDA73D0AE03A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DesignDiagrams", "DesignDiagrams", "{43DB462B-9FB3-4A56-A3AB-C1FB2C1CA9E5}"
+	ProjectSection(SolutionItems) = preProject
+		DesignDiagrams\diagram components.png = DesignDiagrams\diagram components.png
+		DesignDiagrams\diagram service.png = DesignDiagrams\diagram service.png
+		DesignDiagrams\Потенциальные проблемы и изменение требований.txt = DesignDiagrams\Потенциальные проблемы и изменение требований.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -96,6 +105,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{43DB462B-9FB3-4A56-A3AB-C1FB2C1CA9E5} = {55E8E355-BE54-435B-A184-BDA73D0AE03A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5645E5D7-7264-4A31-A8BD-5D055D6B4D87}
