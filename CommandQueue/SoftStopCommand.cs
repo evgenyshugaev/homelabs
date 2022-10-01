@@ -19,7 +19,7 @@ namespace CommandQueue
 
         public void Execute()
         {
-            ((CommandQueueHandler)UObject.GetProperty("CommandQueueHandler")).CommandQueueStrategy = (int count) => { return count > 0; };
+            ((CommandQueueHandler)UObject.GetProperty("CommandQueueHandler")).CommandQueueStrategy = (State state) => { return state != null; };
         }
     }
 }

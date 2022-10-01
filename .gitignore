@@ -2,4 +2,36 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+
 /UnitTestSquare/bin/Debug/net5.0
+/Lab5SpaceShipGame/bin/Debug/netstandard2.0
+/Lab3Square/.vs/Lab3Square
+/Lab3Square/bin/Debug/net5.0
+/.vs
+/Lab3Square/obj
+/Lab5SpaceShipGame/obj
+/SquareLibrary/obj
+/SquareLibrary/bin/Debug/netstandard2.0
+/UnitTestSpaceShipGame/obj
+/UnitTestSpaceShipGame/bin/Debug/net5.0
+/UnitTestSquare/bin/Debug/netstandard2.0
+/UnitTestSquare/obj/Debug
+/UnitTestSquare/obj
+/SpaceShipGameUnitTest/bin/Debug/net48
+/SpaceShipGameUnitTest/obj/Debug/net48
+/SpaceShipGameUnitTest/obj
+/SpaceShipGame/bin/Debug/netstandard2.0
+/SpaceShipGame/obj/Debug/netstandard2.0
+/SpaceShipGame/obj

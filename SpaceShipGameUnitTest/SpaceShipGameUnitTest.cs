@@ -89,7 +89,7 @@ namespace SpaceShipGameUnitTest
             commandQueue.Put(checkFuelCommand);
             commandQueue.Put(checkFuelCommand);
 
-            CommandQueueHandler commandQueueHandler = Ioc.Resolve<CommandQueueHandler>("CommandQueueHandler", commandQueue);
+            CommandQueueHandler commandQueueHandler = Ioc.Resolve<CommandQueueHandler>("CommandQueueHandler", commandQueue, new SimpleState());
             StartQueueCommand startQueueCommand = Ioc.Resolve<StartQueueCommand>("StartQueueCommand", commandQueueHandler);
 
             Assert.DoesNotThrow(() => startQueueCommand.Execute());
@@ -104,7 +104,7 @@ namespace SpaceShipGameUnitTest
             CheckFuelCommand checkFuelCommand = Ioc.Resolve<CheckFuelCommand>("CheckFuelCommand", checkFuelCommandMock.Object, (decimal)5);
 
             CommandQueue.CommandQueue commandQueue = new CommandQueue.CommandQueue();
-            CommandQueueHandler commandQueueHandler = Ioc.Resolve<CommandQueueHandler>("CommandQueueHandler", commandQueue);
+            CommandQueueHandler commandQueueHandler = Ioc.Resolve<CommandQueueHandler>("CommandQueueHandler", commandQueue, new SimpleState());
 
             UObject uobject = new UObject();
             new SetPropertyCommand(uobject, "CommandQueueHandler", commandQueueHandler).Execute();
@@ -134,7 +134,7 @@ namespace SpaceShipGameUnitTest
             CheckFuelCommand checkFuelCommand = Ioc.Resolve<CheckFuelCommand>("CheckFuelCommand", uobject, (decimal)3);
 
             CommandQueue.CommandQueue commandQueue = new CommandQueue.CommandQueue();
-            CommandQueueHandler commandQueueHandler = Ioc.Resolve<CommandQueueHandler>("CommandQueueHandler", commandQueue);
+            CommandQueueHandler commandQueueHandler = Ioc.Resolve<CommandQueueHandler>("CommandQueueHandler", commandQueue, new SimpleState());
             new SetPropertyCommand(uobject, "CommandQueueHandler", commandQueueHandler).Execute();
 
 

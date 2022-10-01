@@ -9,22 +9,29 @@ namespace CommandQueue
     /// </summary>
     public class CommandQueueHandler: ICommand
     {
-        private IQueue Queue;
-        public int QueueCount { get { return Queue.Count(); } }
+        public IQueue Queue { get;  private set; }
+        //public int QueueCount { get { return Queue.Count(); } }
 
-        public CommandQueueHandler(IQueue queue)
+        public IQueue SecondaryQueue { get; private set; }
+        //public int SecondaryQueueCount { get { return SecondaryQueue.Count(); } }
+
+        private State State;
+
+        public CommandQueueHandler(IQueue queue, State state, IQueue secondaryQueue = null)
         {
             Queue = queue;
+            State = state;
+            SecondaryQueue = secondaryQueue;
         }
 
-        public Func<int, bool> CommandQueueStrategy = (int count) =>
+        public Func<State, bool> CommandQueueStrategy = (State state) =>
         {
-            return true;
+            return state != null;
         };
 
         public void Execute()
         {
-            while(CommandQueueStrategy(QueueCount))
+            while(CommandQueueStrategy(State))
             {
                 Handle(Queue);
             }
@@ -32,22 +39,7 @@ namespace CommandQueue
 
         private void Handle(IQueue queue)
         {
-            if (queue.Count() == 0)
-            {
-                return;
-            }
-            
-            ICommand command = queue.Get();
-
-            try
-            {
-                command.Execute();
-            }
-            catch (Exception ex)
-            {
-                ICommand loger = new LogCommand(command, ex);
-                loger.Execute();
-            }
+            State = State.Handle(this);
         }
     }
 }
