@@ -19,17 +19,17 @@ namespace CommandQueue
 
             try
             {
+                if (command is MoveToCommand)
+                {
+                    return new MoveToState();
+                }
+
                 command.Execute();
             }
             catch (Exception ex)
             {
                 ICommand loger = new LogCommand(command, ex);
                 loger.Execute();
-            }
-
-            if (command is MoveToCommand)
-            {
-                return new MoveToState();
             }
 
             return this;

@@ -59,7 +59,7 @@ namespace SpaceShipGame
                 return;
             }
 
-            CommandQueueHandler commandQueueHandler = Ioc.Resolve<CommandQueueHandler>("CommandQueueHandler", Commands, new SimpleState());
+            CommandQueueHandler commandQueueHandler = Ioc.Resolve<CommandQueueHandler>("CommandQueueHandler", Commands);
             StartQueueCommand startQueueCommand = Ioc.Resolve<StartQueueCommand>("StartQueueCommand", commandQueueHandler);
             startQueueCommand.Execute();
 

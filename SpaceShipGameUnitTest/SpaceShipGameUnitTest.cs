@@ -17,6 +17,103 @@ namespace SpaceShipGameUnitTest
     public class SpaceShipGameUnitTest
     {
         [Test]
+        public void HardStopCommandSuccsess()
+        {
+            IocResolveStrategy.RegisterDependensies();
+
+            var checkFuelCommandMock = new UObject();
+            CheckFuelCommand checkFuelCommand = Ioc.Resolve<CheckFuelCommand>("CheckFuelCommand", checkFuelCommandMock, (decimal)5);
+
+            CommandQueue.CommandQueue commandQueue = new CommandQueue.CommandQueue();
+            CommandQueueHandler commandQueueHandler = Ioc.Resolve<CommandQueueHandler>("CommandQueueHandler", commandQueue);
+
+            UObject uobject = new UObject();
+            new SetPropertyCommand(uobject, "CommandQueueHandler", commandQueueHandler).Execute();
+
+            commandQueue.Put(checkFuelCommand);
+            commandQueue.Put(checkFuelCommand);
+            commandQueue.Put(checkFuelCommand);
+
+            StartQueueCommand startQueueCommand = Ioc.Resolve<StartQueueCommand>("StartQueueCommand", commandQueueHandler);
+            HardStopCommand hardStopCommand = Ioc.Resolve<HardStopCommand>("HardStopCommand", uobject);
+
+            Assert.DoesNotThrow(() => startQueueCommand.Execute());
+            Assert.DoesNotThrow(() => hardStopCommand.Execute());
+
+            // Ждем принудительного завершения потока State = null
+            while (!commandQueueHandler.IsStoped)
+            {
+                continue;
+            }
+
+            Assert.AreEqual(commandQueueHandler.IsStoped, true);
+        }
+
+        [Test]
+        public void MoveToCommandSuccsess()
+        {
+            IocResolveStrategy.RegisterDependensies();
+            Ioc.ClearCurrentScope();
+
+            var checkFuelCommandMock = new UObject();
+            CheckFuelCommand checkFuelCommand = Ioc.Resolve<CheckFuelCommand>("CheckFuelCommand", checkFuelCommandMock, (decimal)5);
+
+            CommandQueue.CommandQueue commandQueue = new CommandQueue.CommandQueue();
+            CommandQueue.CommandQueue secondaryCommandQueue = new CommandQueue.CommandQueue();
+            CommandQueueHandler commandQueueHandler = Ioc.Resolve<CommandQueueHandler>("CommandQueueHandler", commandQueue, secondaryCommandQueue);
+
+            UObject uobject = new UObject();
+            new SetPropertyCommand(uobject, "CommandQueueHandler", commandQueueHandler).Execute();
+
+            commandQueue.Put(checkFuelCommand);
+            commandQueue.Put(new MoveToCommand());
+            commandQueue.Put(checkFuelCommand);
+            commandQueue.Put(checkFuelCommand);
+
+            StartQueueCommand startQueueCommand = Ioc.Resolve<StartQueueCommand>("StartQueueCommand", commandQueueHandler);
+
+            Assert.DoesNotThrow(() => startQueueCommand.Execute());
+
+            while (commandQueueHandler.SecondaryQueue.Count() != 2)
+            {
+                continue;
+            }
+
+            Assert.AreEqual(commandQueueHandler.SecondaryQueue.Count(), 2);
+        }
+
+        [Test]
+        public void RunCommandSuccsess()
+        {
+            IocResolveStrategy.RegisterDependensies();
+            Ioc.ClearCurrentScope();
+
+            var checkFuelCommandMock = new UObject();
+            CheckFuelCommand checkFuelCommand = Ioc.Resolve<CheckFuelCommand>("CheckFuelCommand", checkFuelCommandMock, (decimal)5);
+
+            CommandQueue.CommandQueue commandQueue = new CommandQueue.CommandQueue();
+            CommandQueue.CommandQueue secondaryCommandQueue = new CommandQueue.CommandQueue();
+            CommandQueueHandler commandQueueHandler = Ioc.Resolve<CommandQueueHandler>("CommandQueueHandler", commandQueue, secondaryCommandQueue);
+
+            UObject uobject = new UObject();
+            new SetPropertyCommand(uobject, "CommandQueueHandler", commandQueueHandler).Execute();
+
+            commandQueue.Put(new MoveToCommand());
+            commandQueue.Put(checkFuelCommand);
+            commandQueue.Put(new RunCommand());
+            commandQueue.Put(checkFuelCommand);
+            commandQueue.Put(checkFuelCommand);
+            commandQueue.Put(checkFuelCommand);
+
+            StartQueueCommand startQueueCommand = Ioc.Resolve<StartQueueCommand>("StartQueueCommand", commandQueueHandler);
+
+            Assert.DoesNotThrow(() => startQueueCommand.Execute());
+
+            Assert.AreEqual(commandQueueHandler.IsSimple, true);
+        }
+
+
+        [Test]
         public void GetTokenSuccsess()
         {
             string userName = "Василий";
@@ -89,35 +186,10 @@ namespace SpaceShipGameUnitTest
             commandQueue.Put(checkFuelCommand);
             commandQueue.Put(checkFuelCommand);
 
-            CommandQueueHandler commandQueueHandler = Ioc.Resolve<CommandQueueHandler>("CommandQueueHandler", commandQueue, new SimpleState());
+            CommandQueueHandler commandQueueHandler = Ioc.Resolve<CommandQueueHandler>("CommandQueueHandler", commandQueue);
             StartQueueCommand startQueueCommand = Ioc.Resolve<StartQueueCommand>("StartQueueCommand", commandQueueHandler);
 
             Assert.DoesNotThrow(() => startQueueCommand.Execute());
-        }
-
-        [Test]
-        public void HardStopCommandSuccsess()
-        {
-            IocResolveStrategy.RegisterDependensies();
-
-            var checkFuelCommandMock = new Mock<IUObject>();
-            CheckFuelCommand checkFuelCommand = Ioc.Resolve<CheckFuelCommand>("CheckFuelCommand", checkFuelCommandMock.Object, (decimal)5);
-
-            CommandQueue.CommandQueue commandQueue = new CommandQueue.CommandQueue();
-            CommandQueueHandler commandQueueHandler = Ioc.Resolve<CommandQueueHandler>("CommandQueueHandler", commandQueue, new SimpleState());
-
-            UObject uobject = new UObject();
-            new SetPropertyCommand(uobject, "CommandQueueHandler", commandQueueHandler).Execute();
-
-            commandQueue.Put(checkFuelCommand);
-            commandQueue.Put(checkFuelCommand);
-            commandQueue.Put(checkFuelCommand);
-
-            StartQueueCommand startQueueCommand = Ioc.Resolve<StartQueueCommand>("StartQueueCommand", commandQueueHandler);
-            HardStopCommand hardStopCommand = Ioc.Resolve<HardStopCommand>("HardStopCommand", uobject);
-
-            Assert.DoesNotThrow(() => startQueueCommand.Execute());
-            Assert.DoesNotThrow(() => hardStopCommand.Execute());
         }
 
         [Test]
@@ -134,15 +206,13 @@ namespace SpaceShipGameUnitTest
             CheckFuelCommand checkFuelCommand = Ioc.Resolve<CheckFuelCommand>("CheckFuelCommand", uobject, (decimal)3);
 
             CommandQueue.CommandQueue commandQueue = new CommandQueue.CommandQueue();
-            CommandQueueHandler commandQueueHandler = Ioc.Resolve<CommandQueueHandler>("CommandQueueHandler", commandQueue, new SimpleState());
+            CommandQueueHandler commandQueueHandler = Ioc.Resolve<CommandQueueHandler>("CommandQueueHandler", commandQueue);
             new SetPropertyCommand(uobject, "CommandQueueHandler", commandQueueHandler).Execute();
 
 
             commandQueue.Put(checkFuelCommand);
             commandQueue.Put(checkFuelCommand);
             commandQueue.Put(checkFuelCommand);
-
-           
 
             StartQueueCommand startQueueCommand = Ioc.Resolve<StartQueueCommand>("StartQueueCommand", commandQueueHandler);
             SoftStopCommand softStopCommand = Ioc.Resolve<SoftStopCommand>("SoftStopCommand", uobject);

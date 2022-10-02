@@ -14,6 +14,8 @@ namespace CommandQueue
     {
         private CommandQueueHandler CommandQueueHandler;
 
+        public Thread Thread { get; private set; }
+
         public StartQueueCommand(CommandQueueHandler commandQueueHandler)
         {
             CommandQueueHandler = commandQueueHandler;
@@ -23,6 +25,7 @@ namespace CommandQueue
         {
             Thread thread = new Thread(() => CommandQueueHandler.Execute());
             thread.Start();
+            Thread = thread;
         }
     }
 }

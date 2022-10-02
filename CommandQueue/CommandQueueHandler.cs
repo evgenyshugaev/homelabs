@@ -1,5 +1,4 @@
 ﻿using Interfaces;
-using Lab8Exceptions;
 using System;
 
 namespace CommandQueue
@@ -10,18 +9,32 @@ namespace CommandQueue
     public class CommandQueueHandler: ICommand
     {
         public IQueue Queue { get;  private set; }
-        //public int QueueCount { get { return Queue.Count(); } }
 
         public IQueue SecondaryQueue { get; private set; }
-        //public int SecondaryQueueCount { get { return SecondaryQueue.Count(); } }
+
+        public bool IsStoped
+        {
+            get { return State == null;  }
+        }
+
+        public bool IsSimple
+        {
+            get { return State is SimpleState; }
+        }
+
+        public bool IsMoveTo
+        {
+            get { return State is MoveToState; }
+        }
+
 
         private State State;
 
-        public CommandQueueHandler(IQueue queue, State state, IQueue secondaryQueue = null)
+        public CommandQueueHandler(IQueue queue, IQueue secondaryQueue = null)
         {
             Queue = queue;
-            State = state;
             SecondaryQueue = secondaryQueue;
+            State = new SimpleState();
         }
 
         public Func<State, bool> CommandQueueStrategy = (State state) =>
@@ -35,6 +48,8 @@ namespace CommandQueue
             {
                 Handle(Queue);
             }
+
+            State = null;
         }
 
         private void Handle(IQueue queue)

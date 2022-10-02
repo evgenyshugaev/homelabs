@@ -107,7 +107,7 @@ namespace SpaceShipGameServer
         {
             Func<object[], object> f = (args) =>
             {
-                return new CommandQueueHandler((IQueue)args[0], (State)args[1], args.Length > 2 ? (IQueue)args[2] : (IQueue)null);
+                return new CommandQueueHandler((IQueue)args[0], args.Length > 1 ? (IQueue)args[1] : (IQueue)null);
             };
 
             Ioc.Resolve<ICommand>(
