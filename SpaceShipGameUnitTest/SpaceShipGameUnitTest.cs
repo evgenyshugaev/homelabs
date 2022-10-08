@@ -17,6 +17,69 @@ namespace SpaceShipGameUnitTest
     public class SpaceShipGameUnitTest
     {
         [Test]
+        public void SectorCheckCommandSuccsess()
+        {
+            IocResolveStrategy.RegisterDependensies();
+            Ioc.ClearCurrentScope();
+
+            // √енераци€ 4-х секторов игрового пол€
+            var mainSectors = IocResolveStrategy.initializeSectors();
+
+            UObject ship1 = new UObject();
+            new SetPropertyCommand(ship1, "id", "ship1").Execute();
+            new SetPropertyCommand(ship1, "Positiion", new Vector(1, 5)).Execute();
+
+            UObject ship2 = new UObject();
+            new SetPropertyCommand(ship2, "id", "ship2").Execute();
+            new SetPropertyCommand(ship2, "Positiion", new Vector(1, 9)).Execute();
+
+            UObject ship3 = new UObject();
+            new SetPropertyCommand(ship3, "id", "ship3").Execute();
+            new SetPropertyCommand(ship3, "Positiion", new Vector(1, 35)).Execute();
+
+            mainSectors[0].Spaceships.Add(ship2);
+            mainSectors[3].Spaceships.Add(ship3);
+
+            SectorCheckCommand sectorCheckCommand = Ioc.Resolve<SectorCheckCommand>("SectorCheckCommand", ship1, mainSectors[0]);
+            Assert.DoesNotThrow(() => sectorCheckCommand.Execute());
+        }
+
+        [Test]
+        public void TwoSectorsCheckCommandSuccsess()
+        {
+            IocResolveStrategy.RegisterDependensies();
+            Ioc.ClearCurrentScope();
+
+            // √енераци€ 4-х секторов игрового пол€
+            var mainSectors = IocResolveStrategy.initializeSectors();
+
+            // √енераци€ 4-х секторов игрового пол€ со смещеним на 5 координат от центра
+            var shiftSectors = IocResolveStrategy.initializeSectors(5);
+
+
+            UObject ship1 = new UObject();
+            new SetPropertyCommand(ship1, "id", "ship1").Execute();
+            new SetPropertyCommand(ship1, "Positiion", new Vector(1, 5)).Execute();
+
+            UObject ship2 = new UObject();
+            new SetPropertyCommand(ship2, "id", "ship2").Execute();
+            new SetPropertyCommand(ship2, "Positiion", new Vector(1, 9)).Execute();
+
+            UObject ship3 = new UObject();
+            new SetPropertyCommand(ship3, "id", "ship3").Execute();
+            new SetPropertyCommand(ship3, "Positiion", new Vector(1, 35)).Execute();
+
+            mainSectors[0].Spaceships.Add(ship2);
+            mainSectors[3].Spaceships.Add(ship3);
+
+            SectorCheckCommand sectorCheckCommand = Ioc.Resolve<SectorCheckCommand>("SectorCheckCommand", ship1, mainSectors[0]);
+            Assert.DoesNotThrow(() => sectorCheckCommand.Execute());
+
+            SectorCheckCommand shiftSectorCheckCommand = Ioc.Resolve<SectorCheckCommand>("SectorCheckCommand", ship1, shiftSectors[0]);
+            Assert.DoesNotThrow(() => shiftSectorCheckCommand.Execute());
+        }
+
+        [Test]
         public void HardStopCommandSuccsess()
         {
             IocResolveStrategy.RegisterDependensies();

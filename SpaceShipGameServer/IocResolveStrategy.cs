@@ -30,6 +30,63 @@ namespace SpaceShipGameServer
             RegisterStartQueueCommand();
             RegisterHardStopCommand();
             RegisterSoftStopCommand();
+            RegisterObjectCollisionCheckCommand();
+            RegisterSectorCheckCommand();
+        }
+
+
+        /// <summary>
+        /// Стратегия, позволяет генерировать любые смещения координат по оси x для разных окресностей.
+        /// </summary>
+        /// <param name="shift"></param>
+        /// <returns></returns>
+        public static Sector[] initializeSectors(int shift = 0)
+        {
+            var sectors = new Sector[4];
+            Sector neighbor = null;
+
+            for (int i = 3; i >= 0; i--)
+            {
+                List<double> coordinates = new List<double>();
+                int coord = i * 10 + 1 + shift;
+                int coordTen = coord + 9;
+                for (int j = coord; j <= coordTen; j++)
+                {
+                    coordinates.Add(j);
+                }
+
+                var sector = new Sector(i + 1, neighbor, coordinates.ToArray());
+                sectors[i] = sector;
+                neighbor = sector;
+            }
+
+            return sectors;
+        }
+
+        private static void RegisterSectorCheckCommand()
+        {
+            Func<object[], object> f = (args) =>
+            {
+                return new SectorCheckCommand((IUObject)args[0], (Sector)args[1]);
+            };
+
+            Ioc.Resolve<ICommand>(
+            "IoC.Register",
+            "SectorCheckCommand",
+            f);
+        }
+
+        private static void RegisterObjectCollisionCheckCommand()
+        {
+            Func<object[], object> f = (args) =>
+            {
+                return new ObjectCollisionCheckCommand((IUObject)args[0], (IUObject)args[1]);
+            };
+
+            Ioc.Resolve<ICommand>(
+            "IoC.Register",
+            "ObjectCollisionCheckCommand",
+            f);
         }
 
         private static void RegisterGameCommand()
