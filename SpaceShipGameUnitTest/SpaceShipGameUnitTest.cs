@@ -11,11 +11,135 @@ using System.Threading.Tasks;
 using CommandQueue;
 using SecurityToken;
 using SpaceShipGameApi;
+using System.Linq;
 
 namespace SpaceShipGameUnitTest
 {
     public class SpaceShipGameUnitTest
     {
+        [Test]
+        public void OrderInterpetatorCommandSuccsess()
+        {
+            IocResolveStrategy.RegisterDependensies();
+            Ioc.ClearCurrentScope();
+
+            var user1 = new UObject();
+            user1.SetProperty("name", "Евгений");
+            var newGame = Ioc.Resolve<GameCommand>("GameCommand", "new_game", new List<IUObject>() { user1 });
+
+            UObject shipOrder = new UObject();
+            new SetPropertyCommand(shipOrder, "userName", "Евгений").Execute();
+            new SetPropertyCommand(shipOrder, "id", "x-ray").Execute();
+            new SetPropertyCommand(shipOrder, "action", "MoveCommand").Execute();
+            new SetPropertyCommand(shipOrder, "initialVelocity", (decimal)2).Execute();
+
+            OrderInterpretatorCommand orderInterpretatorCommand = Ioc.Resolve<OrderInterpretatorCommand>("OrderInterpretatorCommand", shipOrder, newGame);
+            Assert.DoesNotThrow(() => orderInterpretatorCommand.Execute());
+        }
+
+        [Test]
+        public void OrderMoveCommandSuccsess()
+        {
+            IocResolveStrategy.RegisterDependensies();
+            Ioc.ClearCurrentScope();
+
+            var user1 = new UObject();
+            user1.SetProperty("name", "Евгений");
+            var newGame = Ioc.Resolve<GameCommand>("GameCommand", "new_game", new List<IUObject>() { user1 });
+
+            UObject shipOrder = new UObject();
+            new SetPropertyCommand(shipOrder, "userName", "Евгений").Execute();
+            new SetPropertyCommand(shipOrder, "id", "x-ray").Execute();
+            new SetPropertyCommand(shipOrder, "action", "MoveCommand").Execute();
+            new SetPropertyCommand(shipOrder, "initialVelocity", (decimal)2).Execute();
+
+            OrderInterpretatorCommand orderInterpretatorCommand = Ioc.Resolve<OrderInterpretatorCommand>("OrderInterpretatorCommand", shipOrder, newGame);
+            Assert.DoesNotThrow(() => orderInterpretatorCommand.Execute());
+            Assert.IsTrue(orderInterpretatorCommand.Command is MoveCommand);
+        }
+
+        [Test]
+        public void OrderStopCommandSuccsess()
+        {
+            IocResolveStrategy.RegisterDependensies();
+            Ioc.ClearCurrentScope();
+
+            var user1 = new UObject();
+            user1.SetProperty("name", "Евгений");
+            var newGame = Ioc.Resolve<GameCommand>("GameCommand", "new_game", new List<IUObject>() { user1 });
+
+            UObject shipOrder = new UObject();
+            new SetPropertyCommand(shipOrder, "userName", "Евгений").Execute();
+            new SetPropertyCommand(shipOrder, "id", "x-ray").Execute();
+            new SetPropertyCommand(shipOrder, "action", "StopCommand").Execute();
+
+            OrderInterpretatorCommand orderInterpretatorCommand = Ioc.Resolve<OrderInterpretatorCommand>("OrderInterpretatorCommand", shipOrder, newGame);
+            Assert.DoesNotThrow(() => orderInterpretatorCommand.Execute());
+            Assert.IsTrue(orderInterpretatorCommand.Command is StopCommand);
+        }
+
+        [Test]
+        public void OrderFireCommandSuccsess()
+        {
+            IocResolveStrategy.RegisterDependensies();
+            Ioc.ClearCurrentScope();
+
+            var user1 = new UObject();
+            user1.SetProperty("name", "Евгений");
+            var newGame = Ioc.Resolve<GameCommand>("GameCommand", "new_game", new List<IUObject>() { user1 });
+
+            UObject shipOrder = new UObject();
+            new SetPropertyCommand(shipOrder, "userName", "Евгений").Execute();
+            new SetPropertyCommand(shipOrder, "id", "x-ray").Execute();
+            new SetPropertyCommand(shipOrder, "action", "FireCommand").Execute();
+            new SetPropertyCommand(shipOrder, "fireDirection", "up").Execute();
+            new SetPropertyCommand(shipOrder, "fireCoordinate", new Vector(2.2, 3.0)).Execute();
+
+
+            OrderInterpretatorCommand orderInterpretatorCommand = Ioc.Resolve<OrderInterpretatorCommand>("OrderInterpretatorCommand", shipOrder, newGame);
+            Assert.DoesNotThrow(() => orderInterpretatorCommand.Execute());
+            Assert.IsTrue(orderInterpretatorCommand.Command is FireCommand);
+        }
+
+        [Test]
+        public void CanUserOrderSuccsess()
+        {
+            IocResolveStrategy.RegisterDependensies();
+            Ioc.ClearCurrentScope();
+
+            var user1 = new UObject();
+            user1.SetProperty("name", "Евгений");
+            var newGame = Ioc.Resolve<GameCommand>("GameCommand", "new_game", new List<IUObject>() { user1 });
+
+            UObject shipOrder = new UObject();
+            new SetPropertyCommand(shipOrder, "userName", "Евгений").Execute();
+            new SetPropertyCommand(shipOrder, "id", "x-ray").Execute();
+            new SetPropertyCommand(shipOrder, "action", "StopCommand").Execute();
+
+            OrderInterpretatorCommand orderInterpretatorCommand = Ioc.Resolve<OrderInterpretatorCommand>("OrderInterpretatorCommand", shipOrder, newGame);
+            Assert.DoesNotThrow(() => orderInterpretatorCommand.Execute());
+        }
+
+        [Test]
+        public void CanUserOrderFailed()
+        {
+            IocResolveStrategy.RegisterDependensies();
+            Ioc.ClearCurrentScope();
+
+            var user1 = new UObject();
+            user1.SetProperty("name", "Евгений");
+            var newGame = Ioc.Resolve<GameCommand>("GameCommand", "new_game", new List<IUObject>() { user1 });
+
+            UObject shipOrder = new UObject();
+            new SetPropertyCommand(shipOrder, "userName", "Вольдемар").Execute();
+            new SetPropertyCommand(shipOrder, "id", "x-ray").Execute();
+            new SetPropertyCommand(shipOrder, "action", "StopCommand").Execute();
+
+            OrderInterpretatorCommand orderInterpretatorCommand = Ioc.Resolve<OrderInterpretatorCommand>("OrderInterpretatorCommand", shipOrder, newGame);
+            Assert.Throws<Exception>(() => orderInterpretatorCommand.Execute());
+        }
+
+
         [Test]
         public void SectorCheckCommandSuccsess()
         {

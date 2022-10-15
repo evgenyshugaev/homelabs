@@ -5,11 +5,24 @@ using System.Text;
 
 namespace SpaceShipGame
 {
-    public class MoveCommand : IMove
+    /// <summary>
+    /// Команда движения.
+    /// </summary>
+    public class MoveCommand : ICommand
     {
+        private IUObject UObject;
+        private decimal InitialVelocity;
+
+        public MoveCommand(IUObject uObject, decimal initialVelocity)
+        {
+            UObject = uObject;
+            InitialVelocity = initialVelocity;
+        }
+
         public void Execute()
         {
-            throw new NotImplementedException();
+            // Команда движения
+            UObject.SetProperty("velocity", InitialVelocity);
         }
     }
 }

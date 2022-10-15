@@ -32,6 +32,10 @@ namespace SpaceShipGameServer
             RegisterSoftStopCommand();
             RegisterObjectCollisionCheckCommand();
             RegisterSectorCheckCommand();
+            RegisterMoveCommand();
+            RegisterStopCommand();
+            RegisterOrderInterpretatorCommand();
+            RegisterFireCommand();
         }
 
 
@@ -61,6 +65,59 @@ namespace SpaceShipGameServer
             }
 
             return sectors;
+        }
+
+        private static void RegisterOrderInterpretatorCommand()
+        {
+            Func<object[], object> f = (args) =>
+            {
+                return new OrderInterpretatorCommand((IUObject)args[0], (GameCommand)args[1]);
+            };
+
+            Ioc.Resolve<ICommand>(
+            "IoC.Register",
+            "OrderInterpretatorCommand",
+            f);
+        }
+
+
+        private static void RegisterMoveCommand()
+        {
+            Func<object[], object> f = (args) =>
+            {
+                return new MoveCommand((IUObject)args[0], (decimal)args[1]);
+            };
+
+            Ioc.Resolve<ICommand>(
+            "IoC.Register",
+            "MoveCommand",
+            f);
+        }
+
+        private static void RegisterStopCommand()
+        {
+            Func<object[], object> f = (args) =>
+            {
+                return new StopCommand((IUObject)args[0]);
+            };
+
+            Ioc.Resolve<ICommand>(
+            "IoC.Register",
+            "StopCommand",
+            f);
+        }
+
+        private static void RegisterFireCommand()
+        {
+            Func<object[], object> f = (args) =>
+            {
+                return new FireCommand((IUObject)args[0], (string)args[1], (Vector)args[2]);
+            };
+
+            Ioc.Resolve<ICommand>(
+            "IoC.Register",
+            "FireCommand",
+            f);
         }
 
         private static void RegisterSectorCheckCommand()
