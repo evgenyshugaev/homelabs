@@ -24,13 +24,13 @@ namespace SpaceShipGame
 
         public void Execute()
         {
-            if (!IsUserCanOrder())
-            {
-                throw new Exception("Пользователь не может выполнить приказ над чужим объектом");
-            }
-            
             var id = (string)UObject.GetProperty("id");
             IUObject spaceship = Game.GameObjects.First(g => (string)g.GetProperty("id") == id);
+
+            if (!IsUserCanOrder(spaceship))
+            {
+                throw new Exception($"Пользователь {(string)UObject.GetProperty("userName")} не может выполнить приказ над чужим объектом {(string)spaceship.GetProperty("userName")}");
+            }
 
             var action = (string)UObject.GetProperty("action");
 
@@ -63,11 +63,11 @@ namespace SpaceShipGame
             Command = Ioc.Resolve<ICommand>(action, prms.ToArray());
         }
 
-        private bool IsUserCanOrder()
+        private bool IsUserCanOrder(IUObject spaceship)
         {
             var userName = (string)UObject.GetProperty("userName");
 
-            return Game.GameObjects.Any(u => (string)u.GetProperty("userName") == userName);
+            return (string)spaceship.GetProperty("userName") == userName;
         }
     }
 }
