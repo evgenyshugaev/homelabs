@@ -36,20 +36,20 @@ namespace SpaceShipGame
 
             // При старте игры создаем несколько игровых объектов
             var spaceship_1 = new UObject();
-            spaceship_1.SetProperty("userName", "Евгений");
+            spaceship_1.SetProperty("userName", "Evgeny");
             spaceship_1.SetProperty("id", "x-ray");
             spaceship_1.SetProperty("fuel", (decimal)5);
 
             GameObjects.Add(spaceship_1);
 
             var spaceship_2 = new UObject();
-            spaceship_2.SetProperty("userName", "Олег");
+            spaceship_2.SetProperty("userName", "Oleg");
             spaceship_2.SetProperty("id", "destroyer");
             spaceship_2.SetProperty("fuel", (decimal)10);
             GameObjects.Add(spaceship_2);
 
             var spaceship_3 = new UObject();
-            spaceship_3.SetProperty("userName", "Владимир");
+            spaceship_3.SetProperty("userName", "Vladimir");
             spaceship_3.SetProperty("id", "death star");
             spaceship_3.SetProperty("fuel", (decimal)150);
             GameObjects.Add(spaceship_3);

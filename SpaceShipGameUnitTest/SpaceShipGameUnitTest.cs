@@ -24,11 +24,11 @@ namespace SpaceShipGameUnitTest
             Ioc.ClearCurrentScope();
 
             var user1 = new UObject();
-            user1.SetProperty("name", "Евгений");
+            user1.SetProperty("name", "Evgeny");
             var newGame = Ioc.Resolve<GameCommand>("GameCommand", "new_game", new List<IUObject>() { user1 });
 
             UObject shipOrder = new UObject();
-            new SetPropertyCommand(shipOrder, "userName", "Евгений").Execute();
+            new SetPropertyCommand(shipOrder, "userName", "Evgeny").Execute();
             new SetPropertyCommand(shipOrder, "id", "x-ray").Execute();
             new SetPropertyCommand(shipOrder, "action", "MoveCommand").Execute();
             new SetPropertyCommand(shipOrder, "initialVelocity", (decimal)2).Execute();
@@ -44,11 +44,11 @@ namespace SpaceShipGameUnitTest
             Ioc.ClearCurrentScope();
 
             var user1 = new UObject();
-            user1.SetProperty("name", "Евгений");
+            user1.SetProperty("name", "Evgeny");
             var newGame = Ioc.Resolve<GameCommand>("GameCommand", "new_game", new List<IUObject>() { user1 });
 
             UObject shipOrder = new UObject();
-            new SetPropertyCommand(shipOrder, "userName", "Евгений").Execute();
+            new SetPropertyCommand(shipOrder, "userName", "Evgeny").Execute();
             new SetPropertyCommand(shipOrder, "id", "x-ray").Execute();
             new SetPropertyCommand(shipOrder, "action", "MoveCommand").Execute();
             new SetPropertyCommand(shipOrder, "initialVelocity", (decimal)2).Execute();
@@ -65,11 +65,11 @@ namespace SpaceShipGameUnitTest
             Ioc.ClearCurrentScope();
 
             var user1 = new UObject();
-            user1.SetProperty("name", "Евгений");
+            user1.SetProperty("name", "Evgeny");
             var newGame = Ioc.Resolve<GameCommand>("GameCommand", "new_game", new List<IUObject>() { user1 });
 
             UObject shipOrder = new UObject();
-            new SetPropertyCommand(shipOrder, "userName", "Евгений").Execute();
+            new SetPropertyCommand(shipOrder, "userName", "Evgeny").Execute();
             new SetPropertyCommand(shipOrder, "id", "x-ray").Execute();
             new SetPropertyCommand(shipOrder, "action", "StopCommand").Execute();
 
@@ -85,11 +85,11 @@ namespace SpaceShipGameUnitTest
             Ioc.ClearCurrentScope();
 
             var user1 = new UObject();
-            user1.SetProperty("name", "Евгений");
+            user1.SetProperty("name", "Evgeny");
             var newGame = Ioc.Resolve<GameCommand>("GameCommand", "new_game", new List<IUObject>() { user1 });
 
             UObject shipOrder = new UObject();
-            new SetPropertyCommand(shipOrder, "userName", "Евгений").Execute();
+            new SetPropertyCommand(shipOrder, "userName", "Evgeny").Execute();
             new SetPropertyCommand(shipOrder, "id", "x-ray").Execute();
             new SetPropertyCommand(shipOrder, "action", "FireCommand").Execute();
             new SetPropertyCommand(shipOrder, "fireDirection", "up").Execute();
@@ -108,11 +108,11 @@ namespace SpaceShipGameUnitTest
             Ioc.ClearCurrentScope();
 
             var user1 = new UObject();
-            user1.SetProperty("name", "Евгений");
+            user1.SetProperty("name", "Evgeny");
             var newGame = Ioc.Resolve<GameCommand>("GameCommand", "new_game", new List<IUObject>() { user1 });
 
             UObject shipOrder = new UObject();
-            new SetPropertyCommand(shipOrder, "userName", "Евгений").Execute();
+            new SetPropertyCommand(shipOrder, "userName", "Evgeny").Execute();
             new SetPropertyCommand(shipOrder, "id", "x-ray").Execute();
             new SetPropertyCommand(shipOrder, "action", "StopCommand").Execute();
 
@@ -127,11 +127,11 @@ namespace SpaceShipGameUnitTest
             Ioc.ClearCurrentScope();
 
             var user1 = new UObject();
-            user1.SetProperty("name", "Евгений");
+            user1.SetProperty("name", "Evgeny");
             var newGame = Ioc.Resolve<GameCommand>("GameCommand", "new_game", new List<IUObject>() { user1 });
 
             UObject shipOrder = new UObject();
-            new SetPropertyCommand(shipOrder, "userName", "Вольдемар").Execute();
+            new SetPropertyCommand(shipOrder, "userName", "Voldemar").Execute();
             new SetPropertyCommand(shipOrder, "id", "x-ray").Execute();
             new SetPropertyCommand(shipOrder, "action", "StopCommand").Execute();
 
@@ -340,7 +340,7 @@ namespace SpaceShipGameUnitTest
             IocResolveStrategy.RegisterDependensies();
 
             var user1 = new UObject();
-            user1.SetProperty("name", "Евгений");
+            user1.SetProperty("name", "Evgeny");
             var newGame = Ioc.Resolve<GameCommand>("GameCommand", "new_game", new List<IUObject>() { user1 });
             Assert.DoesNotThrow(() => newGame.Execute());
         }
@@ -351,7 +351,7 @@ namespace SpaceShipGameUnitTest
             IocResolveStrategy.RegisterDependensies();
 
             var user1 = new UObject();
-            user1.SetProperty("name", "Евгений");
+            user1.SetProperty("name", "Evgeny");
             var newGame = Ioc.Resolve<GameCommand>("GameCommand", "new_game", new List<IUObject>() { user1 });
             InterpretCommand inetrpretCommand = Ioc.Resolve<InterpretCommand>("InetrpretCommand", newGame);
 
